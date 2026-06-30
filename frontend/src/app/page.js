@@ -128,6 +128,7 @@ export default function HomePage() {
         </div>
       ) : sessions.length === 0 ? (
         <div className="empty-state">
+          <div className="empty-state-icon">✨</div>
           <h3>No sessions yet</h3>
           <p>Be the first creator to list a session!</p>
         </div>

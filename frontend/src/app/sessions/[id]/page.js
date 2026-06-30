@@ -79,7 +79,7 @@ export default function SessionDetailPage() {
         ) : (
           <div className="session-detail-image" style={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: '5rem', background: 'linear-gradient(135deg, #6c5ce7, #a29bfe)',
+            fontSize: '5rem', background: 'linear-gradient(135deg, var(--bg-card-hover), var(--accent-glow))',
           }}>
             🎯
           </div>
@@ -108,7 +108,7 @@ export default function SessionDetailPage() {
           </div>
 
           <div style={{ marginTop: '1.5rem' }}>
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.75rem' }}>About this session</h2>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.75rem' }}>About this session</h2>
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, whiteSpace: 'pre-wrap' }}>
               {session.description || 'No description provided.'}
             </p>
@@ -119,7 +119,7 @@ export default function SessionDetailPage() {
       <div>
         <div className="booking-card">
           <div className="booking-card-price">
-            {parseFloat(session.price) === 0 ? 'Free' : `$${parseFloat(session.price).toFixed(2)}`}
+            {parseFloat(session.price) === 0 ? <span style={{color: 'var(--accent-primary)'}}>Free</span> : `$${parseFloat(session.price).toFixed(2)}`}
           </div>
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: '0.5rem' }}>
             per person

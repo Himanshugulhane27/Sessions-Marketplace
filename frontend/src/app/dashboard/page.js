@@ -8,9 +8,10 @@ import api from '@/lib/api';
 function BookingsList({ bookings, onCancel }) {
   if (bookings.length === 0) {
     return (
-      <div className="empty-state">
+      <div className="empty-state fade-in" style={{ marginTop: '2rem' }}>
+        <div className="empty-state-icon">📅</div>
         <h3>No bookings yet</h3>
-        <p>Browse sessions and book your first one!</p>
+        <p>Browse sessions and book your first one to get started!</p>
       </div>
     );
   }
@@ -23,7 +24,7 @@ function BookingsList({ bookings, onCancel }) {
           <div key={booking.id} className="booking-item fade-in">
             <div className="booking-item-image" style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              background: 'linear-gradient(135deg, #6c5ce7, #a29bfe)', fontSize: '1.5rem',
+              background: 'linear-gradient(135deg, var(--bg-card-hover), var(--accent-glow))', fontSize: '1.5rem',
             }}>
               🎯
             </div>
@@ -188,7 +189,7 @@ export default function DashboardPage() {
     <div className="page-container fade-in">
       <div className="page-header">
         <h1>Dashboard</h1>
-        <p>Manage your bookings and profile</p>
+        <p style={{ fontSize: '1.125rem' }}>Manage your bookings and profile</p>
       </div>
 
       <div className="tabs">

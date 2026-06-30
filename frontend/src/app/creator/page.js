@@ -265,7 +265,7 @@ export default function CreatorPage() {
       <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
           <h1>Creator Studio</h1>
-          <p>Manage your sessions and track bookings</p>
+          <p style={{ fontSize: '1.125rem' }}>Manage your sessions and track bookings</p>
         </div>
         <button className="btn btn-primary" onClick={() => setShowCreate(true)}>
           + Create Session
@@ -280,10 +280,11 @@ export default function CreatorPage() {
           Loading sessions...
         </div>
       ) : sessions.length === 0 ? (
-        <div className="empty-state">
+        <div className="empty-state fade-in" style={{ marginTop: '2rem' }}>
+          <div className="empty-state-icon">🎙️</div>
           <h3>No sessions yet</h3>
-          <p>Create your first session to start earning!</p>
-          <button className="btn btn-primary" style={{ marginTop: '1rem' }} onClick={() => setShowCreate(true)}>
+          <p>Create your first session to start earning and sharing your craft with the world!</p>
+          <button className="btn btn-primary" style={{ marginTop: '1.5rem' }} onClick={() => setShowCreate(true)}>
             + Create Session
           </button>
         </div>
