@@ -34,7 +34,14 @@ function BookingsList({ bookings, onCancel }) {
                 {date.toLocaleDateString()} • {date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}
               </p>
             </div>
-            <span className={`badge badge-${booking.status}`}>{booking.status}</span>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.5rem' }}>
+              <span className={`badge badge-${booking.status}`}>{booking.status}</span>
+              {booking.payment_status && (
+                <span className={`badge ${booking.payment_status === 'paid' ? 'badge-completed' : 'badge-cancelled'}`}>
+                  {booking.payment_status === 'paid' ? 'Paid' : booking.payment_status}
+                </span>
+              )}
+            </div>
             {booking.status === 'active' && onCancel && (
               <button
                 className="btn btn-danger btn-sm"

@@ -53,8 +53,27 @@ docker-compose.yml
    ```
 
 4. **Access the app:**
-   - Frontend: http://localhost (via Nginx)
-   - API: http://localhost/api/
+- **Next.js frontend**: `http://localhost` (via Nginx proxy)
+- **Django backend / DRF API**: `http://localhost/api/`
+
+---
+
+## Payments (Bonus)
+The app uses Stripe Checkout in **Test Mode** for session bookings.
+
+To configure:
+1. Get your Stripe test keys (`pk_test_...` and `sk_test_...`).
+2. Add them to `.env`:
+   ```bash
+   STRIPE_SECRET_KEY=sk_test_...
+   STRIPE_PUBLISHABLE_KEY=pk_test_...
+   ```
+3. When booking a session, use the Stripe test card:
+   - **Card Number**: `4242 4242 4242 4242`
+   - **Expiry**: Any future date (e.g. `12/30`)
+   - **CVC**: Any 3 digits (e.g. `123`)
+
+Upon successful payment, the app redirects to the success page and updates the booking to "Paid".
    - Django Admin: http://localhost/admin/
 
 ### Creating a Google OAuth Client

@@ -40,12 +40,15 @@ export default function SessionDetailPage() {
     try {
       setBooking(true);
       setError('');
-      await api.post('/bookings/', { session: session.id });
-      setSuccess('Session booked successfully! 🎉');
-      loadSession();
+      const data = await api.post('/bookings/checkout/', { session: session.id });
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        setError('No checkout URL returned.');
+        setBooking(false);
+      }
     } catch (err) {
       setError(err.message);
-    } finally {
       setBooking(false);
     }
   }

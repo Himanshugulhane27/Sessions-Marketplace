@@ -9,6 +9,12 @@ class Booking(models.Model):
         ('completed', 'Completed'),
     ]
 
+    PAYMENT_STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('paid', 'Paid'),
+        ('failed', 'Failed'),
+    ]
+
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -20,6 +26,8 @@ class Booking(models.Model):
         related_name='bookings',
     )
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='active')
+    payment_status = models.CharField(max_length=10, choices=PAYMENT_STATUS_CHOICES, default='pending')
+    stripe_session_id = models.CharField(max_length=255, blank=True, null=True)
     booked_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
